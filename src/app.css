@@ -89,6 +89,7 @@
 
 	/* ─── Spacing ─── */
 	--section-y: 6rem;
+	--section-y-mob: 3rem;
 	--section-x: 2.5rem;
 	--section-x-mob: 1.25rem;
 	--card-pad: 2rem;

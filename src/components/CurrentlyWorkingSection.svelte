@@ -24,7 +24,7 @@
 	};
 </script>
 
-<section id="working-on" class="relative py-[var(--section-y)] px-[var(--section-x-mob)] md:px-[var(--section-x)]">
+<section id="working-on" class="relative py-[var(--section-y-mob)] md:py-[var(--section-y)] px-[var(--section-x-mob)] md:px-[var(--section-x)]">
 	<NeuralBackground />
 	<div class="max-w-6xl mx-auto relative z-10">
 		<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-16">

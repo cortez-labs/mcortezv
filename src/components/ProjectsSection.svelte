@@ -13,7 +13,7 @@
 	}
 </script>
 
-<section id="projects" class="relative pt-[var(--section-y)] pb-16 md:pb-20 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
+<section id="projects" class="relative pt-[var(--section-y-mob)] md:pt-[var(--section-y)] pb-6 md:pb-20 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
 	<NeuralBackground />
 	<div class="max-w-6xl mx-auto relative z-10">
 		<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-16">
@@ -74,7 +74,7 @@
 			</div>
 		</div>
 		<!-- Transición suave hacia contacto -->
-		<div class="mt-12 md:mt-16 pt-10 border-t border-[var(--neural-grid)]/40"></div>
+		<div class="mt-6 pt-6 md:mt-16 md:pt-10 border-t border-[var(--neural-grid)]/40"></div>
 	</div>
 </section>
 

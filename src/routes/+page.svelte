@@ -80,7 +80,7 @@
 	<ProjectsSection projects={projects} />
 
 	<!-- ═══ CONTACT ═══ -->
-	<section id="contact" class="relative pt-8 pb-20 md:pb-24 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
+	<section id="contact" class="relative pt-4 pb-20 md:pt-8 md:pb-24 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
 		<NeuralBackground />
 		<div class="max-w-4xl mx-auto relative z-10">
 			<div class="glass-morphism border border-[var(--neural-grid)] rounded-lg p-10 md:p-14 text-center">

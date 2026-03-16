@@ -23,7 +23,7 @@
 	};
 </script>
 
-<section id="about" class="relative py-[var(--section-y)] px-[var(--section-x-mob)] md:px-[var(--section-x)]">
+<section id="about" class="relative py-[var(--section-y-mob)] md:py-[var(--section-y)] px-[var(--section-x-mob)] md:px-[var(--section-x)]">
 	<NeuralBackground />
 	<div class="max-w-6xl mx-auto relative z-10">
 		<!-- Section label -->

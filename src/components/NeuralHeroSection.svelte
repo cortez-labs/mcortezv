@@ -16,13 +16,13 @@
 			initNeuralNetwork();
 		}
 		
-		// Orbs flotantes (estilo ferdev-site)
+		// Orbs flotantes (móvil + desktop tienen SVGs separados; animamos todos)
 		if (heroOrbsContainer) {
 			import('gsap').then(({ gsap }) => {
-				const orb1 = heroOrbsContainer.querySelector('.hero-orb-1');
-				const orb2 = heroOrbsContainer.querySelector('.hero-orb-2');
-				if (orb1) gsap.to(orb1, { y: -28, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-				if (orb2) gsap.to(orb2, { y: 22, x: -12, duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.5 });
+				const orbs1 = heroOrbsContainer.querySelectorAll('.hero-orb-1');
+				const orbs2 = heroOrbsContainer.querySelectorAll('.hero-orb-2');
+				orbs1.forEach((orb) => gsap.to(orb, { y: -28, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' }));
+				orbs2.forEach((orb) => gsap.to(orb, { y: 22, x: -12, duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.5 }));
 			});
 		}
 		
@@ -136,9 +136,27 @@
 		aria-hidden="true"
 	></canvas>
 	
-	<!-- Orbs de luz (estilo ferdev-site) - encima del canvas para que se vean -->
+	<!-- Orbs de luz - móvil: viewBox 400x700 para ver orbs en esquinas; desktop: 1440x700 -->
 	<div bind:this={heroOrbsContainer} class="absolute inset-0 pointer-events-none select-none z-[1]" aria-hidden="true">
-		<svg class="w-full h-full" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+		<!-- Móvil: orbs en esquinas visibles -->
+		<svg class="w-full h-full md:hidden" viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<radialGradient id="hero-orb-1-grad-mob" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" stop-color="#4338ca" stop-opacity="0.28"/>
+					<stop offset="50%" stop-color="#4338ca" stop-opacity="0.12"/>
+					<stop offset="100%" stop-color="#4338ca" stop-opacity="0"/>
+				</radialGradient>
+				<radialGradient id="hero-orb-2-grad-mob" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" stop-color="#3730a3" stop-opacity="0.24"/>
+					<stop offset="70%" stop-color="#3730a3" stop-opacity="0.08"/>
+					<stop offset="100%" stop-color="#3730a3" stop-opacity="0"/>
+				</radialGradient>
+			</defs>
+			<circle class="hero-orb-1" cx="80" cy="100" r="180" fill="url(#hero-orb-1-grad-mob)"/>
+			<circle class="hero-orb-2" cx="320" cy="580" r="200" fill="url(#hero-orb-2-grad-mob)"/>
+		</svg>
+		<!-- Desktop -->
+		<svg class="w-full h-full hidden md:block" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
 			<defs>
 				<radialGradient id="hero-orb-1-grad" cx="50%" cy="50%" r="50%">
 					<stop offset="0%" stop-color="#4338ca" stop-opacity="0.35"/>
@@ -154,7 +172,6 @@
 			<circle class="hero-orb-1" cx="1250" cy="130" r="420" fill="url(#hero-orb-1-grad)"/>
 			<circle class="hero-orb-2" cx="100" cy="590" r="310" fill="url(#hero-orb-2-grad)"/>
 
-			<!-- Red neural sutil - top-right (orb 1) -->
 			<line x1="1100" y1="100" x2="1180" y2="160" stroke="#4338ca" stroke-width="0.5" opacity="0.12"/>
 			<line x1="1180" y1="160" x2="1220" y2="220" stroke="#4338ca" stroke-width="0.5" opacity="0.10"/>
 			<line x1="1150" y1="180" x2="1200" y2="140" stroke="#4f46e5" stroke-width="0.5" opacity="0.08"/>
@@ -163,7 +180,6 @@
 			<circle cx="1220" cy="220" r="1" fill="#4338ca" opacity="0.18"/>
 			<circle cx="1150" cy="180" r="0.8" fill="#4f46e5" opacity="0.15"/>
 
-			<!-- Red neural sutil - bottom-left (orb 2) -->
 			<line x1="180" y1="520" x2="260" y2="580" stroke="#3730a3" stroke-width="0.5" opacity="0.12"/>
 			<line x1="260" y1="580" x2="320" y2="620" stroke="#3730a3" stroke-width="0.5" opacity="0.10"/>
 			<line x1="220" y1="560" x2="280" y2="540" stroke="#4338ca" stroke-width="0.5" opacity="0.08"/>
@@ -194,10 +210,10 @@
 			</div>
 			
 			<!-- Call to actions -->
-			<div bind:this={heroCtas} class="flex flex-wrap gap-4">
+			<div bind:this={heroCtas} class="flex flex-nowrap gap-2 sm:flex-wrap sm:gap-4 overflow-x-auto pb-1 sm:overflow-visible sm:pb-0">
 				<a
 					href="#papers"
-					class="inline-flex items-center justify-center px-8 py-3 text-micro bg-[var(--primary)] text-primary-foreground hover:opacity-90 transition-all duration-200 hover:-translate-y-0.5 rounded-lg"
+					class="inline-flex flex-shrink-0 items-center justify-center px-5 py-2.5 sm:px-8 sm:py-3 text-micro bg-[var(--primary)] text-primary-foreground hover:opacity-90 transition-all duration-200 hover:-translate-y-0.5 rounded-lg"
 				>
 					Explorar Investigaciones
 				</a>
@@ -205,7 +221,7 @@
 					href="https://linkedin.com/in/mcortezv"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex items-center justify-center px-8 py-3 text-micro border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--accent)] transition-colors rounded-lg"
+					class="inline-flex flex-shrink-0 items-center justify-center px-5 py-2.5 sm:px-8 sm:py-3 text-micro border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--accent)] transition-colors rounded-lg"
 				>
 					LinkedIn &rarr;
 				</a>
@@ -220,7 +236,7 @@
 	<div class="absolute bottom-20 left-10">
 		<div class="neural-node" style="width: 30px; height: 30px;"></div>
 	</div>
-	<div class="absolute top-1/2 right-20">
+	<div class="absolute top-1/2 right-4 md:right-20">
 		<div class="neural-node" style="width: 20px; height: 20px;"></div>
 	</div>
 	
