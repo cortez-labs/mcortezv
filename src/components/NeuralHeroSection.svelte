@@ -11,8 +11,7 @@
 	let particles: Array<{x: number, y: number, vx: number, vy: number, size: number}> = [];
 	
 	onMount(() => {
-		// Initialize neural network animation
-		if (neuralCanvas) {
+		if (neuralCanvas && window.innerWidth >= 768) {
 			initNeuralNetwork();
 		}
 		
@@ -129,10 +128,10 @@
 
 <section class="relative overflow-hidden min-h-screen flex flex-col justify-center pt-24 pb-16 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
 	
-	<!-- Neural Network Canvas Background -->
+	<!-- Neural Network Canvas - solo desktop -->
 	<canvas 
 		bind:this={neuralCanvas}
-		class="absolute inset-0 pointer-events-none"
+		class="absolute inset-0 pointer-events-none hidden md:block"
 		aria-hidden="true"
 	></canvas>
 	

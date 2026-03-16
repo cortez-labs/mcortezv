@@ -6,7 +6,7 @@
 	let connections: Array<{x1: number, y1: number, x2: number, y2: number, opacity: number}> = [];
 	
 	onMount(() => {
-		if (neuralCanvas) {
+		if (neuralCanvas && window.innerWidth >= 768) {
 			initNeuralBackground();
 		}
 	});
@@ -101,9 +101,10 @@
 	}
 </script>
 
+<!-- Grafos solo en desktop -->
 <canvas 
 	bind:this={neuralCanvas}
-	class="absolute inset-0 pointer-events-none opacity-30"
+	class="absolute inset-0 pointer-events-none opacity-30 hidden md:block"
 	aria-hidden="true"
 ></canvas>
 
