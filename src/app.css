@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Epilogue:wght@300;400;500;700&family=DM+Mono:wght@300;400;500&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Design Tokens ─── */
+:root {
+	--radius: 0.25rem;
+
+	/* shadcn/ui */
+	--primary: #0f766e;
+	--primary-foreground: #f8fafc;
+	--secondary: #f0fdfa;
+	--secondary-foreground: #0f172a;
+	--muted: #f8fafc;
+	--muted-foreground: #64748b;
+	--accent: #ccfbf1;
+	--accent-foreground: #0f766e;
+	--ring: #0f766e;
+
+	--background: #fafafa;
+	--foreground: #0a0a0a;
+	--card: #ffffff;
+	--card-foreground: #0a0a0a;
+	--popover: #ffffff;
+	--popover-foreground: #0a0a0a;
+	--destructive: #dc2626;
+	--destructive-foreground: #ffffff;
+	--border: #e2e8f0;
+	--input: #e2e8f0;
+
+	/* Brand: Teal editorial */
+	--neural-primary: #0f766e;
+	--neural-secondary: #1F2937;
+	--neural-accent: #14b8a6;
+	--neural-cyan: #64748b;
+	--neural-magenta: #9CA3AF;
+	--neural-yellow: #D1D5DB;
+
+	/* Fondos de secciones */
+	--bg-default: #fafafa;
+	--bg-papers: #f0fdfa;
+	--bg-hero: #ffffff;
+	--bg-contact: #f8fafc;
+
+	/* Neutrales */
+	--ink: #0a0a0a;
+	--muted-brand: #64748b;
+	--neural-grid: #e2e8f0;
+	--neural-circuit: #0f766e08;
+
+	--neural-dark: #ffffff;
+	--neural-dark-secondary: #f0fdfa;
+	--neural-dark-accent: #f8fafc;
+	--carbon: #171717;
+	--border-brand: #e2e8f0;
+	--paper: #fafafa;
+
+	/* ─── Brand Colors: Slate ─── */
+	--slate-900: #0f172a;
+	--slate-800: #1e293b;
+	--slate-700: #334155;
+	--slate-600: #475569;
+	--slate-500: #64748b;
+	--slate-400: #94a3b8;
+	--slate-300: #cbd5e1;
+
+	/* ─── Accent Colors (para papers) - tonos suaves ─── */
+	--accent-emerald: #0d9488;
+	--accent-purple: #6d28d9;
+	--accent-orange: #b45309;
+
+	/* Academic (teal scale) */
+	--academic-900: #134e4a;
+	--academic-800: #115e59;
+	--academic-700: #0f766e;
+	--academic-600: #0f766e;
+	--academic-400: #2dd4bf;
+	--academic-100: #ccfbf1;
+	--academic-50: #f0fdfa;
+
+	/* ─── Fonts ─── */
+	--font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Epilogue', system-ui, sans-serif;
+	--font-mono: 'DM Mono', 'Courier New', monospace;
+
+	/* ─── Spacing ─── */
+	--section-y: 6rem;
+	--section-x: 2.5rem;
+	--section-x-mob: 1.25rem;
+	--card-pad: 2rem;
+	--card-pad-sm: 1.5rem;
+	--gap-grid: 1px;
+	--gap-cards: 1.5rem;
+	--gap-inline: 1.25rem;
+
+	/* ─── Motion ─── */
+	--duration-fast: 150ms;
+	--duration-normal: 250ms;
+	--duration-slow: 350ms;
+	--duration-reveal: 800ms;
+	--ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+	--ease-enter: cubic-bezier(0, 0, 0.2, 1);
+	--ease-exit: cubic-bezier(0.4, 0, 1, 1);
+	--ease-emphasis: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dark {
+	--background: #0a0a0a;
+	--foreground: #fafafa;
+
+	--card: #171717;
+	--card-foreground: #fafafa;
+
+	--popover: #171717;
+	--popover-foreground: #fafafa;
+
+	--primary: #14b8a6;
+	--primary-foreground: #f8fafc;
+
+	--secondary: #1e293b;
+	--secondary-foreground: #f8fafc;
+
+	--muted: #1e293b;
+	--muted-foreground: #94a3b8;
+
+	--accent: #0f766e;
+	--accent-foreground: #ccfbf1;
+
+	--destructive: #dc2626;
+	--destructive-foreground: #ffffff;
+
+	--border: #334155;
+	--input: #334155;
+	--ring: #14b8a6;
+
+	--paper: #0a0a0a;
+	--bg-default: #0a0a0a;
+	--bg-papers: #171717;
+}
+
+@theme inline {
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	/* Brand color utilities */
+	--color-academic-900: var(--academic-900);
+	--color-academic-800: var(--academic-800);
+	--color-academic-700: var(--academic-700);
+	--color-academic-600: var(--academic-600);
+	--color-academic-400: var(--academic-400);
+	--color-academic-100: var(--academic-100);
+	--color-academic-50: var(--academic-50);
+	--color-slate-900: var(--slate-900);
+	--color-slate-800: var(--slate-800);
+	--color-slate-700: var(--slate-700);
+	--color-slate-600: var(--slate-600);
+	--color-slate-500: var(--slate-500);
+	--color-slate-400: var(--slate-400);
+	--color-slate-300: var(--slate-300);
+	--color-accent-emerald: var(--accent-emerald);
+	--color-accent-purple: var(--accent-purple);
+	--color-accent-orange: var(--accent-orange);
+	--color-ink: var(--ink);
+	--color-carbon: var(--carbon);
+	--color-paper: var(--paper);
+
+	--font-display: var(--font-display);
+	--font-sans: var(--font-sans);
+	--font-mono: var(--font-mono);
+}
+
+/* ─── Base Styles ─── */
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground font-sans antialiased;
+		font-family: var(--font-sans);
+	}
+	h1, h2, h3, h4 {
+		font-family: var(--font-display);
+	}
+}
+
+/* ─── Homepage: Cormorant Garamond para todo (excepto papers individuales) ─── */
+.font-display-site,
+.font-display-site .text-body,
+.font-display-site .text-body-lg,
+.font-display-site .text-body-sm,
+.font-display-site .text-micro,
+.font-display-site .font-mono-brand,
+.font-display-site .font-body,
+.font-display-site .text-label,
+.font-display-site .section-label {
+	font-family: var(--font-display) !important;
+}
+.font-display-site .text-micro,
+.font-display-site .font-mono-brand {
+	letter-spacing: 0.08em;
+}
+
+/* ─── Typography Utilities ─── */
+@layer utilities {
+	.font-display {
+		font-family: var(--font-display);
+	}
+	.font-body {
+		font-family: var(--font-sans);
+	}
+	.font-mono-brand {
+		font-family: var(--font-mono);
+	}
+	.text-hero {
+		font-family: var(--font-display);
+		font-size: clamp(4rem, 7vw, 6.5rem);
+		font-weight: 300;
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+	}
+	.text-h1 {
+		font-family: var(--font-display);
+		font-size: clamp(2.4rem, 4vw, 3.5rem);
+		font-weight: 300;
+		line-height: 1.1;
+	}
+	.text-h2 {
+		font-family: var(--font-display);
+		font-size: clamp(1.8rem, 3vw, 2.6rem);
+		font-weight: 300;
+		line-height: 1.2;
+	}
+	.text-h3 {
+		font-family: var(--font-display);
+		font-size: 1.4rem;
+		font-weight: 400;
+		line-height: 1.25;
+	}
+	.text-body-lg {
+		font-family: var(--font-sans);
+		font-size: 1.05rem;
+		font-weight: 300;
+		line-height: 1.75;
+	}
+	.text-body {
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.7;
+	}
+	.text-body-sm {
+		font-family: var(--font-sans);
+		font-size: 0.9rem;
+		font-weight: 400;
+		line-height: 1.6;
+	}
+	.text-label {
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+	}
+	.text-micro {
+		font-family: var(--font-mono);
+		font-size: 0.65rem;
+		font-weight: 400;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	/* Section label with line */
+	.section-label {
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--academic-600);
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.section-label::after {
+		content: '';
+		flex: 1;
+		height: 1px;
+		background: var(--border-brand);
+	}
+
+	/* Neural Network Effects - Light SEO */
+	.neural-glow {
+		box-shadow: 0 0 20px rgba(15, 118, 110, 0.3);
+	}
+	
+	.neural-pulse {
+		animation: neuralPulse 2s infinite;
+	}
+	
+	@keyframes neuralPulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.7; }
+	}
+	
+	.neural-connection {
+		background: linear-gradient(90deg, var(--neural-primary), var(--neural-accent));
+		background-size: 200% 100%;
+		animation: neuralFlow 3s linear infinite;
+	}
+	
+	@keyframes neuralFlow {
+		0% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+		100% { background-position: 0% 50%; }
+	}
+	
+	/* Glassmorphism Effects - Light */
+	.glass-morphism {
+		background: rgba(255, 255, 255, 0.7);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(15, 118, 110, 0.1);
+	}
+	
+	.glass-dark {
+		background: rgba(255, 255, 255, 0.8);
+		backdrop-filter: blur(15px);
+		border: 1px solid rgba(15, 118, 110, 0.2);
+	}
+	
+	/* Circuit Pattern - Light (solo en hero, mantener indigo como orbs) */
+	.circuit-pattern {
+		background-image: 
+			linear-gradient(90deg, transparent 24%, rgba(79, 70, 229, 0.03) 25%, rgba(79, 70, 229, 0.03) 26%, transparent 27%, transparent 74%, rgba(79, 70, 229, 0.03) 75%, rgba(79, 70, 229, 0.03) 76%, transparent 77%, transparent),
+			linear-gradient(0deg, transparent 24%, rgba(79, 70, 229, 0.03) 25%, rgba(79, 70, 229, 0.03) 26%, transparent 27%, transparent 74%, rgba(79, 70, 229, 0.03) 75%, rgba(79, 70, 229, 0.03) 76%, transparent 77%, transparent);
+		background-size: 50px 50px;
+	}
+	
+	/* Neural Node - Hero usa teal como los botones */
+	section:first-of-type .neural-node {
+		background: #0f766e;
+		box-shadow: 0 0 0 10px rgba(15, 118, 110, 0.2), 0 0 20px rgba(15, 118, 110, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.3);
+	}
+	section:first-of-type .neural-node::before {
+		background: radial-gradient(circle, rgba(15, 118, 110, 0.1) 0%, transparent 70%);
+	}
+	
+	/* Neural Node Effect - resto del sitio usa teal */
+	.neural-node {
+		position: relative;
+		background: var(--neural-primary);
+		border-radius: 50%;
+		box-shadow: 
+			0 0 0 10px rgba(15, 118, 110, 0.2),
+			0 0 20px rgba(15, 118, 110, 0.1),
+			inset 0 0 10px rgba(255, 255, 255, 0.3);
+	}
+	
+	.neural-node::before {
+		content: '';
+		position: absolute;
+		top: -20px;
+		left: -20px;
+		right: -20px;
+		bottom: -20px;
+		background: radial-gradient(circle, rgba(15, 118, 110, 0.1) 0%, transparent 70%);
+		border-radius: 50%;
+		animation: neuralPulse 2s infinite;
+	}
+	
+	/* Data Stream Effect - Light */
+	.data-stream {
+		background: linear-gradient(90deg, transparent, var(--neural-accent), transparent);
+		background-size: 200% 100%;
+		animation: dataStream 2s linear infinite;
+	}
+	
+	@keyframes dataStream {
+		0% { background-position: -100% 0; }
+		100% { background-position: 100% 0; }
+	}
+	
+	/* Holographic Text - Light */
+	.holographic-text {
+		text-shadow: 
+			0 0 10px rgba(15, 118, 110, 0.3),
+			0 0 20px rgba(15, 118, 110, 0.2),
+			0 0 30px rgba(15, 118, 110, 0.1);
+		animation: holographicFlicker 3s infinite;
+	}
+	
+	@keyframes holographicFlicker {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.95; }
+		75% { opacity: 1; }
+	}
+	
+	/* Glitch Effect - Light */
+	.glitch-effect {
+		position: relative;
+	}
+	
+	.glitch-effect::before,
+	.glitch-effect::after {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.glitch-effect::before {
+		animation: glitch-1 0.5s infinite;
+		color: var(--neural-primary);
+		z-index: -1;
+	}
+	
+	.glitch-effect::after {
+		animation: glitch-2 0.5s infinite;
+		color: var(--neural-secondary);
+		z-index: -2;
+	}
+	
+	@keyframes glitch-1 {
+		0%, 100% { clip-path: inset(0 0 0 0); }
+		25% { clip-path: inset(20% 0 30% 0); }
+		50% { clip-path: inset(50% 0 20% 0); }
+		75% { clip-path: inset(70% 0 40% 0); }
+	}
+	
+	@keyframes glitch-2 {
+		0%, 100% { clip-path: inset(0 0 0 0); }
+		25% { clip-path: inset(0 20% 0 30%); }
+		50% { clip-path: inset(0 50% 0 20%); }
+		75% { clip-path: inset(0 70% 0 40%); }
+	}
+	
+	/* Particle Effect - Light */
+	.particle-container {
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.neural-particle {
+		position: absolute;
+		width: 2px;
+		height: 2px;
+		background: var(--neural-accent);
+		border-radius: 50%;
+		box-shadow: 0 0 6px rgba(15, 118, 110, 0.4);
+		animation: particleFloat 4s infinite ease-in-out;
+	}
+	
+	@keyframes particleFloat {
+		0%, 100% { 
+			transform: translateY(0) translateX(0);
+			opacity: 0;
+		}
+		10% {
+			opacity: 1;
+		}
+		90% {
+			opacity: 1;
+		}
+		50% { 
+			transform: translateY(-20px) translateX(10px);
+		}
+	}
+
+	/* Scrollbar hiding */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {
+	background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--border);
+	border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--muted-foreground);
+}

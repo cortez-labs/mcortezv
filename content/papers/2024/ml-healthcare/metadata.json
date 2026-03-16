@@ -1,0 +1,14 @@
+{
+  "title": "Machine Learning Applications in Healthcare: A Comprehensive Analysis",
+  "category": "Machine Learning",
+  "date": "2024-03-15",
+  "author": "Manuel Cortez",
+  "tags": ["machine-learning", "healthcare", "ai", "medical-ai"],
+  "abstract": "An in-depth analysis of machine learning applications in modern healthcare systems, focusing on diagnostic accuracy, patient outcomes, and ethical considerations.",
+  "heroImage": "/assets/papers/ml-healthcare-hero.jpg",
+  "readingTime": "12 min",
+  "status": "published",
+  "featured": true,
+  "citations": 15,
+  "downloads": 234
+}

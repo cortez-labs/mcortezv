@@ -1,0 +1,14 @@
+{
+  "title": "Advanced Financial Analysis Using Machine Learning Techniques",
+  "category": "Financial Analysis",
+  "date": "2023-11-20",
+  "author": "Manuel Cortez",
+  "tags": ["financial-analysis", "machine-learning", "trading", "risk-management"],
+  "abstract": "Exploring the application of advanced machine learning techniques in financial market analysis, portfolio optimization, and risk assessment strategies.",
+  "heroImage": "/assets/papers/financial-analysis-hero.jpg",
+  "readingTime": "18 min",
+  "status": "published",
+  "featured": false,
+  "citations": 12,
+  "downloads": 189
+}
