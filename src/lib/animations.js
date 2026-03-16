@@ -175,6 +175,8 @@ export async function counterAnimation(element, options = {}) {
 
 export async function initLenis() {
 	if (!features.smoothScroll) return null;
+	// Lenis desactivado en móvil: evita espacio extra debajo del footer y problemas de scroll
+	if (typeof window !== 'undefined' && window.innerWidth < 768) return null;
 
 	// Cargar GSAP primero para que ScrollTriggerPlugin esté listo antes de iniciar Lenis
 	const gsap = features.gsapAnimations ? await loadGsap() : null;

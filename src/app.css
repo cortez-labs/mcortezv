@@ -98,6 +98,10 @@
 	--gap-cards: 1.5rem;
 	--gap-inline: 1.25rem;
 
+	/* ─── Viewport (evita espacio extra en móvil) ─── */
+	--vh-dynamic: 100dvh;
+	--vh-fallback: 100vh;
+
 	/* ─── Motion ─── */
 	--duration-fast: 150ms;
 	--duration-normal: 250ms;
@@ -201,9 +205,13 @@
 	* {
 		@apply border-border;
 	}
+	html {
+		overflow-x: hidden;
+	}
 	body {
 		@apply bg-background text-foreground font-sans antialiased;
 		font-family: var(--font-sans);
+		overflow-x: hidden;
 	}
 	h1, h2, h3, h4 {
 		font-family: var(--font-display);

@@ -57,7 +57,7 @@
 
 <Navbar />
 
-<main class="min-h-screen bg-[var(--bg-default)]">
+<main class="min-h-screen bg-[var(--bg-default)] overflow-x-hidden">
 
 	<!-- ═══ HERO SECTION ═══ -->
 	<NeuralHeroSection />

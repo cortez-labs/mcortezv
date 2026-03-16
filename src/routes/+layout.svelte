@@ -19,6 +19,6 @@
 	});
 </script>
 
-<div class="min-h-screen" class:font-display-site={!$page.url.pathname.startsWith('/papers/')}>
+<div class="min-h-screen w-full overflow-x-hidden" class:font-display-site={!$page.url.pathname.startsWith('/papers/')}>
 	{@render children()}
 </div>
