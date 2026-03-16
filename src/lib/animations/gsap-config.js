@@ -3,7 +3,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { SplitText } from 'gsap/SplitText';
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin, SplitText);
 
 /**
