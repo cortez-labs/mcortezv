@@ -139,10 +139,10 @@
 {:else if paper}
 	<div class="min-h-screen bg-[var(--bg-default)]">
 		<!-- Paper Header -->
-		<header class="relative overflow-hidden pt-24 pb-20 px-[var(--section-x-mob)] md:px-[var(--section-x)] bg-[var(--bg-hero)]">
+		<header class="paper-header relative overflow-hidden pt-24 pb-20 max-md:pt-20 max-md:pb-12 px-[var(--section-x-mob)] md:px-[var(--section-x)] bg-[var(--bg-hero)]">
 			<div class="max-w-4xl mx-auto">
 				<div bind:this={paperMeta} class="mb-8">
-					<div class="flex items-center gap-4 mb-6">
+					<div class="flex items-center gap-4 max-md:flex-wrap max-md:gap-2 mb-6">
 						<span 
 							class="text-micro px-3 py-1.5 rounded-md font-medium text-white"
 							style="background: {getCategoryColor(paper.category)};"
@@ -157,7 +157,7 @@
 						</span>
 					</div>
 					
-					<div class="flex flex-wrap gap-2 mb-6">
+					<div class="flex flex-wrap gap-2 max-md:gap-1.5 mb-6">
 						{#each paper.tags as tag}
 							<span class="text-micro px-2.5 py-1 bg-[var(--muted)] text-[var(--muted-foreground)] rounded-md border border-[var(--border)]">
 								{tag}
@@ -166,7 +166,7 @@
 					</div>
 				</div>
 				
-				<h1 bind:this={paperTitle} class="text-hero text-[var(--ink)] mb-6">
+				<h1 bind:this={paperTitle} class="text-hero text-[var(--ink)] mb-6 paper-title">
 					{paper.title}
 				</h1>
 				
@@ -177,7 +177,7 @@
 		</header>
 		
 		<!-- Paper Content -->
-		<main class="py-16 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
+		<main class="py-16 max-md:py-10 px-[var(--section-x-mob)] md:px-[var(--section-x)]">
 			<div class="max-w-4xl mx-auto">
 				<article bind:this={paperContent} class="paper-article">
 					<div class="paper-content">
@@ -187,8 +187,8 @@
 				
 				<!-- Paper Meta Info -->
 				<div class="mt-16 pt-8 border-t border-[var(--border)]">
-					<div class="flex items-center justify-between text-micro text-[var(--muted-foreground)]">
-						<div class="flex items-center gap-6">
+					<div class="flex items-center justify-between max-md:flex-col max-md:items-start max-md:gap-4 text-micro text-[var(--muted-foreground)]">
+						<div class="flex items-center gap-6 max-md:flex-wrap max-md:gap-3">
 							<span class="flex items-center gap-1">
 								<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
 									<path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385V4.804z"/>
@@ -217,10 +217,10 @@
 		
 		<!-- Related Papers -->
 		{#if relatedPapers.length > 0}
-			<section class="py-16 px-[var(--section-x-mob)] md:px-[var(--section-x)] bg-[var(--bg-papers)]">
+			<section class="py-16 max-md:py-10 px-[var(--section-x-mob)] md:px-[var(--section-x)] bg-[var(--bg-papers)]">
 				<div class="max-w-6xl mx-auto">
 					<div class="section-label mb-12">Related Papers</div>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--gap-cards)]">
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--gap-cards)] max-md:gap-4">
 						{#each relatedPapers as relatedPaper}
 							<PaperCard 
 								paper={relatedPaper} 
@@ -237,6 +237,14 @@
 <Footer />
 
 <style>
+	/* Mobile: override text-hero for paper title (evitar desborde) */
+	@media (max-width: 767px) {
+		:global(.paper-header .paper-title) {
+			font-size: clamp(2.5rem, 10vw, 4rem) !important;
+			line-height: 1.2 !important;
+		}
+	}
+
 	:global(.paper-content .paper-h2) {
 		font-size: 1.75rem;
 		font-weight: 600;
@@ -336,5 +344,42 @@
 		padding: 0.6rem 1rem;
 		border-bottom: 1px solid var(--border);
 		color: var(--foreground);
+	}
+
+	/* Mobile-only overrides for paper content */
+	@media (max-width: 767px) {
+		:global(.paper-content) {
+			word-break: break-word;
+			overflow-wrap: break-word;
+		}
+
+		:global(.paper-content .paper-h2) {
+			font-size: 1.4rem;
+		}
+
+		:global(.paper-content .paper-h3) {
+			font-size: 1.15rem;
+		}
+
+		:global(.paper-content .paper-h4) {
+			font-size: 1rem;
+		}
+
+		:global(.paper-content .paper-p) {
+			font-size: 0.95rem;
+		}
+
+		:global(.paper-content .paper-pre) {
+			padding: 0.75rem 1rem;
+			font-size: 0.8rem;
+		}
+
+		:global(.paper-content .paper-pre code) {
+			font-size: 0.8rem;
+		}
+
+		:global(.paper-content .paper-table-wrap) {
+			-webkit-overflow-scrolling: touch;
+		}
 	}
 </style>
